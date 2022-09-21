@@ -1,0 +1,23 @@
+<label class="mb-2">
+  From: <input type="text" class="form-control" [(ngModel)]="email.from">
+</label><br>
+<label class="mb-2">
+  To: <input type="text" class="form-control" [(ngModel)]="email.to">
+</label><br>
+<label class="mb-2">
+  Subject: <input type="text"  class="form-control" [(ngModel)]="email.subject">
+</label><br>
+<label class="mb-2">
+  Body: <textarea type="text"  class="form-control" [(ngModel)]="email.body"> </textarea>
+</label><br><br>
+
+<h4>This is your email (up-to-date viewer): </h4>
+<p>
+  From: {{ email.from  }} <br>
+  To: {{ email.to }} <br>
+  Subject: {{ email.subject }} <br>
+  Body: {{ email.body }}
+</p>
+
+<button (click)="send()" class="btn btn-primary btn-sm me-2">Send</button>
+<button (click)="clean()" class="btn btn-danger btn-sm">Clean</button>
