@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Email } from '../interfaces/email';
-import { Student } from '../interfaces/student';
 
 @Component({
   selector: 'app-email-reader-basic',
