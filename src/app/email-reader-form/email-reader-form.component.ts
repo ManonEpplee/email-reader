@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Email } from '../interfaces/email';
 
 @Component({
   selector: 'app-email-reader-form',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmailReaderFormComponent implements OnInit {
 
-  constructor() { }
+  email: Email
+  emailList: {to: string, subject: string}[]
+  @ViewChild('emailForm') emailForm: any
+
+  constructor() {
+    this.email = { from: "", to: "", subject: "", body: "" }
+    this.emailList = []
+   }
 
   ngOnInit(): void {
   }
 
+  sendForm(): void {
+    this.emailList?.push({ to: this.email.to, subject: this.email.subject })
+    window.alert(`The email "${this.email.subject}" has been sent to ${this.email.to}`)
+    this.emailForm.reset()
+  }
 }

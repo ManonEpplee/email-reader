@@ -1,0 +1,17 @@
+.valid-input {
+  border: 10px solid green;
+}
+
+.invalid-input {
+  border: 10px solid yellow;
+  background-color: red;
+}
+
+.input-field:focus {
+  background-color: white;
+  border: 1px solid blue;
+}
+
+.table-cell {
+  font-weight: normal;
+}
