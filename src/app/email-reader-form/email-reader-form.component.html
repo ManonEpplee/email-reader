@@ -66,6 +66,14 @@
     <tr *ngFor="let email of emailList">
       <td class="table-cell">{{email.to}}</td>
       <td class="table-cell">{{email.subject}}</td>
+      <td>
+        <button
+          class="btn btn-danger"
+          (click)="deleteEmail(email.id)"
+        >
+          X
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
