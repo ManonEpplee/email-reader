@@ -1,7 +1,19 @@
 	<div class="container">
 	  <div class="jumbotron">
 	    <h1> Programming of User Interfaces </h1>
-	    <h3> Exercise 2: Email-Reader-Form</h3>
-	    <app-email-reader-form></app-email-reader-form>
+      <div ngbDropdown class="d-inline-block mb-3">
+        <button class="btn btn-outline-primary mr-2" id="dropdownBasic1" ngbDropdownToggle>
+            Exercises
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem>
+                <a routerLink="/emailreaderbasic">Exercise 1: Email Reader Basic</a>
+            </button>
+            <button ngbDropdownItem>
+                <a routerLink="/emailreaderform">Exercise 2: Email Reader Form</a>
+            </button>
+        </div>
+      </div>
 	  </div>
+    <router-outlet></router-outlet>
 	</div>
