@@ -55,26 +55,44 @@
 </form>
 
 <h3>Emails:</h3>
-<table *ngIf="emailList.length > 0; else emptyList" class="table">
-  <thead>
-    <tr>
-      <th>To</th>
-      <th>Subject</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let email of emailList">
-      <td class="table-cell">{{email.to}}</td>
-      <td class="table-cell">{{email.subject}}</td>
-      <td>
-        <button
-          class="btn btn-danger"
-          (click)="deleteEmail(email.id)"
-        >
-          X
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<ng-template #emptyList>The list of emails is empty</ng-template>
+<input
+  class="my-3 me-5"
+  type="text"
+  [(ngModel)]="filterTerm"
+  placeholder="Search emails for text">
+<input
+  type="checkbox"
+  [(ngModel)]="withBody"
+  >
+  With body
+<div>
+  <table *ngIf="emailList.length > 0; else emptyList" class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Subject</th>
+        <th>Body</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let email of emailList | filter:filterTerm | withbodyFilter:withBody">
+        <td class="table-cell">{{email.id}}</td>
+        <td class="table-cell">{{email.from}}</td>
+        <td class="table-cell">{{email.to}}</td>
+        <td class="table-cell">{{email.subject}}</td>
+        <td class="table-cell">{{email.body}}</td>
+        <td>
+          <button
+            class="btn btn-danger"
+            (click)="deleteEmail(email.id)"
+          >
+            X
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #emptyList>The list of emails is empty</ng-template>
+</div>

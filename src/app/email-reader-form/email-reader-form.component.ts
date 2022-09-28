@@ -11,11 +11,16 @@ export class EmailReaderFormComponent implements OnInit {
 
   email: Email
   emailList: Email[]
+  filterTerm: string
+  withBody: boolean
+
   @ViewChild('emailForm') emailForm: any
 
   constructor(private emailService: EmailService) {
     this.email = { id: 0, from: "", to: "", subject: "", body: "" }
     this.emailList = this.emailService.getEmails()
+    this.filterTerm = ""
+    this.withBody = false
    }
 
   ngOnInit(): void {
