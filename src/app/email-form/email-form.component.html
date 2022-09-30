@@ -1,0 +1,56 @@
+<h3>Email Form</h3><br>
+<form #emailForm="ngForm" (ngSubmit)="sendForm()" class="mb-5">
+  <div class="form-group">
+    <label> From<abbr title="required">*</abbr> </label>
+    <input
+      class="form-control input-field mb-2"
+      type="text"
+      required
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      [(ngModel)]="email.from"
+      name="from"
+      #from="ngModel"
+      [ngClass]="from.valid ? 'valid-input': 'invalid-input'">
+    <div *ngIf="from.invalid && !from.pristine" class="text-danger mb-2"> Please provide a correct email</div>
+  </div>
+  <div class="form-group">
+    <label> To<abbr title="required">*</abbr> </label>
+    <input
+      class="form-control input-field mb-2"
+      type="text"
+      required
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      [(ngModel)]="email.to"
+      name="to"
+      #to="ngModel"
+      [ngClass]="to.valid ? 'valid-input': 'invalid-input'">
+    <div *ngIf="to.invalid && !to.pristine" class="text-danger mb-2"> Please provide a correct email</div>
+  </div>
+  <div class="form-group">
+    <label> Subject<abbr title="required">*</abbr> </label>
+    <input
+      class="form-control input-field mb-2"
+      type="text"
+      required
+      minlength = "10"
+      maxlength = "50"
+      [(ngModel)]="email.subject"
+      name="subject"
+      #subject="ngModel"
+      [ngClass]="subject.valid ? 'valid-input': 'invalid-input'">
+    <div *ngIf="subject.invalid && !subject.pristine" class="text-danger mb-2"> Please enter 10-50 characters</div>
+  </div>
+  <div class="form-group">
+    <label> Body </label>
+    <textarea
+      class="form-control input-field"
+      [(ngModel)]="email.body"
+      name="body"
+      #body="ngModel"
+      [ngClass]="body.valid ? 'valid-input': 'invalid-input'">
+    </textarea>
+  </div>
+  <button class="btn btn-primary btn-sm mt-3 me-2" type="submit" [disabled]="!emailForm.form.valid">Add email</button>
+  <button class="btn btn-primary btn-sm mt-3" type="button" (click)="emailForm.reset()">Reset form</button>
+</form>
+<a routerLink="/emailslist"> Go Back</a>
